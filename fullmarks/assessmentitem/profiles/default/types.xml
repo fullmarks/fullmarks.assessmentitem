@@ -1,0 +1,4 @@
+<object name="portal_types">
+    <object name="fullmarks.assessmentitem.assessmentitem" meta_type="Dexterity FTI" />
+    <object name="fullmarks.assessmentitem.referencematerial" meta_type="Dexterity FTI" />
+</object>
