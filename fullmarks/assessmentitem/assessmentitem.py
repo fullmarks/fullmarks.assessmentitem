@@ -9,6 +9,8 @@ from plone.formwidget.contenttree import ObjPathSourceBinder, \
 from plone.directives import form, dexterity
 from plone.app.textfield import RichText
 
+from Products.ATContentTypes.interfaces.interfaces import ITextContent
+
 from fullmarks.assessmentitem import _
 from fullmarks.assessmentitem.referencematerial import IReferenceMaterial
 
@@ -20,7 +22,7 @@ class IAssessmentItem(form.Schema):
     referenceMaterial = RelationChoice(
             title=_(u"Reference Material"),
             source=ObjPathSourceBinder(
-                object_provides=IReferenceMaterial.__identifier__),
+                object_provides=ITextContent.__identifier__),
             required=False,
         )
 
@@ -40,18 +42,25 @@ class IAssessmentItem(form.Schema):
             default=0,
         )
 
+    form.omitted('answerMarkedCorrect')
     answerMarkedCorrect = schema.Int(
             title=_(u"Answer Marked Correct"),
             description=_(u"The number of times other members have "
                            "confirmed the answer as correct"),
+            required=False,
+            default=0,
         )
 
+    form.omitted('answerMarkedIncorrect')
     answerMarkedIncorrect = schema.Int(
             title=_(u"Answer Marked Incorrect"),
             description=_(u"The number of times other members have "
                            "marked the answer as incorrect"),
+            required=False,
+            default=0,
         )
 
+    form.omitted('dateLastUsed')
     dateLastUsed = schema.Datetime(
             title=_(u"Date Last Used"),
             description=_(u"The last time this item was used in a test"),
@@ -63,4 +72,8 @@ class IAssessmentItem(form.Schema):
             required=False,
         )
 
+
+class View(dexterity.DisplayForm):
+    grok.context(IAssessmentItem)
+    grok.require('zope2.View')
 
