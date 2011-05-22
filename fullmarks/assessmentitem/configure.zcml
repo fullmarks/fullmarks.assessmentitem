@@ -21,7 +21,6 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
         
-
     <adapter
         for="fullmarks.assessmentitem.assessmentitem.IAssessmentItem"
         factory=".behaviors.versionname.NameFromVersion"
