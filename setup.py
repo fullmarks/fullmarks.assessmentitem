@@ -24,7 +24,12 @@ setup(name='fullmarks.assessmentitem',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'Plone',
+          'plone.app.dexterity',
+          'plone.principalsource',
+          'plone.namedfile',
+          'plone.formwidget.namedfile',
+          'collective.wtf',
       ],
       entry_points="""
       # -*- Entry points: -*-
