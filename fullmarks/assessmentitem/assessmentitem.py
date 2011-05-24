@@ -12,7 +12,6 @@ from plone.app.textfield import RichText
 from Products.ATContentTypes.interfaces.interfaces import ITextContent
 
 from fullmarks.assessmentitem import _
-from fullmarks.assessmentitem.referencematerial import IReferenceMaterial
 
 class IAssessmentItem(form.Schema):
     """Assessment Item
