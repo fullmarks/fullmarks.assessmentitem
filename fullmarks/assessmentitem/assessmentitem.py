@@ -6,7 +6,7 @@ from z3c.relationfield.schema import RelationChoice
 from plone.formwidget.autocomplete import AutocompleteFieldWidget
 from plone.formwidget.contenttree import ObjPathSourceBinder, \
     ContentTreeFieldWidget
-from plone.directives import form, dexterity
+from plone.directives import form
 from plone.app.textfield import RichText
 
 from Products.ATContentTypes.interfaces.interfaces import ITextContent
@@ -72,7 +72,7 @@ class IAssessmentItem(form.Schema):
         )
 
 
-class View(dexterity.DisplayForm):
+class View(form.DisplayForm):
     grok.context(IAssessmentItem)
     grok.require('zope2.View')
 
