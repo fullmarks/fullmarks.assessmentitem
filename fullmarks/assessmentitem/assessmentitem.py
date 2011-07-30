@@ -1,3 +1,5 @@
+import xml.dom.minidom
+
 from five import grok
 from zope import schema
 
@@ -12,6 +14,7 @@ from plone.app.textfield import RichText
 from Products.ATContentTypes.interfaces.interfaces import ITextContent
 
 from fullmarks.assessmentitem import _
+
 
 class IAssessmentItem(form.Schema):
     """Assessment Item
@@ -76,3 +79,12 @@ class View(form.DisplayForm):
     grok.context(IAssessmentItem)
     grok.require('zope2.View')
 
+class QTI(grok.View):
+    grok.context(IAssessmentItem)
+    grok.require('zope2.View')
+    
+    def render(self):
+       self.request.response.setHeader('Content-Type', 'text/xml')
+       doc = xml.dom.minidom.Document()
+       
+       return "<item/>"
