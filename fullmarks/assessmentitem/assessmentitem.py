@@ -87,4 +87,22 @@ class QTI(grok.View):
        self.request.response.setHeader('Content-Type', 'text/xml')
        doc = xml.dom.minidom.Document()
        
-       return "<item/>"
+       item = doc.createElement("item")
+       doc.appendChild(item)
+       item.setAttribute("title",self.context.title)
+       item.setAttribute("ident",self.context.id)
+
+       item_md = doc.createElement("itemmetadata")
+       item.appendChild(item_md)
+
+       pres = doc.createElement("presentation")
+       item.appendChild(pres)
+
+       material = doc.createElement("material")
+       pres.appendChild(material)
+
+       mattext = doc.createElement("mattext")
+       material.appendChild(mattext)
+
+       return doc.toprettyxml()
+

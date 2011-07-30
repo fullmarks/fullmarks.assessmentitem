@@ -53,11 +53,5 @@ class TestAssessmentItem(PloneTestCase):
         #We dont really know how to represent this in a standard way
         #self.assertEqual(mattext_dom.firstChild.data,??)
 
-
-
-
-
-
-
 def test_suite():
     return unittest.defaultTestLoader.loadTestsFromName(__name__)
